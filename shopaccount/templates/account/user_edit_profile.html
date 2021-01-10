@@ -1,0 +1,51 @@
+{% extends 'shared/_MainLayout.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="{{ edit_form.first_name.id_for_label }}">{{ register_form.user_name.label }}</label>
+                    {{ edit_form.first_name }}
+
+                    {% for error in edit_form.first_name.errors %}
+                        <p style="color: red;font-size: 15px">{{ error }}</p>
+                    {% endfor %}
+
+
+                    <label for="{{ edit_form.last_name.id_for_label }}">{{ register_form.email.label }}</label>
+                    {{ edit_form.last_name }}
+
+                    {% for error in edit_form.last_name.errors %}
+                        <p style="color: red;font-size: 15px">{{ error }}</p>
+                    {% endfor %}
+                    <br>
+                    <button type="submit" class="btn btn-success">ویرایش</button>
+                </form>
+
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/user">
+                            پنل کاربری
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="user/edit-profile">
+                            ویرایش اطلاعات
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/logout">
+                            خروج
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
